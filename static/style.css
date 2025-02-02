@@ -1,0 +1,177 @@
+/* Mengatur font dan background umum */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Layout dengan Flexbox */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Navbar */
+nav {
+    width: 200px;
+    background-color: #2c3e50;
+    padding-top: 20px;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+}
+
+nav ul li {
+    margin-bottom: 20px;
+}
+
+nav ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    transition: background-color 0.3s, padding-left 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #34495e;
+    padding-left: 30px;
+}
+
+/* Konten Utama */
+main {
+    margin-left: 50px;
+    padding: 30px;
+    flex-grow: 1;
+}
+
+/* Header */
+header {
+    background-color: #3498db;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+header p {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+/* Section utama */
+section {
+    background-color: white;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #2980b9;
+}
+
+/* Card container */
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 48%;
+}
+
+.card h3 {
+    color: #2980b9;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.card input[type="text"], .card input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.card button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background-color: #2980b9;
+}
+
+/* Hasil input di card kanan */
+#resultCard p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    padding-right: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsif untuk tampilan mobile */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    nav {
+        width: 100%;
+        position: relative;
+        height: auto;
+    }
+
+    main {
+        margin-left: 0;
+    }
+
+    .card-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .card {
+        width: 100%;
+    }
+}

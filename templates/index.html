@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Website Profesional</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    Sidebar Navbar
+    <nav>
+        <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#services">Layanan</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    Konten Utama
+    <main>
+        <header>
+            <h1>SKIN CHECK</h1>
+            <p>Website ini didesain untuk memberikan informasi mengenai penyakit kulit.</p>
+        </header>
+
+        <section id="home">
+            <h2>Beranda</h2>
+            <div class="card-container">
+                <!-- Card Kiri: Form untuk Input -->
+                <div class="card">
+                    <h3>Form Input</h3>
+                    <!-- <form method="POST">
+                        <label for="name">Nama:</label>
+                        <input type="text" id="name" name="name" required><br><br>
+                        
+                        <label for="age">Usia:</label>
+                        <input type="number" id="age" name="age" required><br><br>
+                        
+                        <button type="submit">Kirim</button>
+                    </form> -->
+
+                    <!-- Form Upload Gambar -->
+                    <form action="/" method="POST" enctype="multipart/form-data">
+                        <label for="file">Pilih Gambar:</label>
+                        <input type="file" id="file" name="file" required>
+                        <button type="submit">Unggah & Prediksi</button>
+                    </form>
+                </div>
+
+                <!-- Card Kanan: Menampilkan Hasil Input -->
+                <!-- <div class="card" id="resultCard">
+                    <h3>Hasil Input</h3>
+                    <p id="resultName">Nama: {{ name if name else '-' }}</p>
+                    <p id="resultAge">Usia: {{ age if age else '-' }}</p>
+                </div> -->
+                <!-- Menampilkan hasil jika ada -->
+                <div class="card">
+
+                
+                    {% if filename %}
+                    <h2>Hasil Prediksi</h2>
+                    <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image" width="300">
+                    <p><strong>Kelas:</strong> {{ class_name }}</p>
+                    <p><strong>Kepercayaan:</strong> {{ confidence | round(1) }} %</p>
+                {% endif %}
+
+                <!-- Menampilkan pesan error jika ada -->
+                    {% if error %}
+                        <p style="color: red;">{{ error }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+        <!-- <footer>
+            <p>&copy; 2025 Website Profesional. Semua hak cipta dilindungi.</p>
+        </footer> -->
+    </main>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
