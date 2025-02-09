@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 # Load custom YOLOv8 model for classification
-model = YOLO("D:./runs/classify/train11/weights/best.pt")  # Gantilah dengan model hasil training Anda
+model = YOLO("D:./runs/classify/train12/weights/best.pt")  # Gantilah dengan model hasil training Anda
 
 UPLOAD_FOLDER = "static/uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
