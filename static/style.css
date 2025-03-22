@@ -1,177 +1,317 @@
-/* Mengatur font dan background umum */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary: #1a73e8;
+    --secondary: #8ab4f8;
+    --accent: #34a853;
+    --warn: #fbbc04;
+    --neutral: #f1f3f4;
+    --dark: #202124;
+    --light: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.05);
+    --spacing: 24px;
+    --spacing2: 48px;
+    --card-spacing: 18px;
 }
 
-/* Layout dengan Flexbox */
-.container {
-    display: flex;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background: var(--neutral);
+    color: var(--dark);
     min-height: 100vh;
 }
 
-/* Sidebar Navbar */
-nav {
-    width: 200px;
-    background-color: #2c3e50;
-    padding-top: 20px;
-    position: fixed;
-    height: 100%;
-    top: 0;
-    left: 0;
+.container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--spacing);
+    padding: var(--spacing);
+    min-height: 100vh;
 }
 
+/* Sidebar Improvements */
+nav {
+    position: sticky;
+    top: var(--spacing); /* Tetap di atas layar */
+    background: var(--primary);
+    border-radius: 15px;
+    padding: 1rem; /* Padding disesuaikan */
+    box-shadow: 0 4px 15px var(--shadow);
+    display: flex;
+    flex-direction: column; /* Item disusun vertikal */
+    align-items: flex-start; /* Rata kiri */
+    height: 100vh; /* Tinggi penuh viewport */
+}
+
+
 nav ul {
-    list-style-type: none;
-    padding: 0;
+    list-style: none;
     margin: 0;
-    font-size: 18px;
+    padding: 0;
+    width: 100%; /* Lebar penuh */
+    position: relative; /* Untuk mengatur posisi anak-anaknya */
+    top: 33.33%; /* Posisi 1/3 dari tinggi nav */
+    transform: translateY(-50%); /* Geser ke atas sebesar setengah tinggi konten */
+    
 }
 
 nav ul li {
-    margin-bottom: 20px;
+    width: 100%; /* Pastikan setiap item memiliki lebar penuh */
 }
 
 nav ul li a {
-    color: #ecf0f1;
+    color: var(--light);
     text-decoration: none;
-    padding: 15px;
-    display: block;
-    transition: background-color 0.3s, padding-left 0.3s;
+    font-weight: 500;
+    padding: 20px 20px; /* Padding disesuaikan */
+    border-radius: 8px;
+    display: flex;
+    align-items: center; /* Posisi teks dan indikator sejajar */
+    transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+    width: 100%; /* Lebar penuh untuk konsistensi */
+    letter-spacing: 4px;
 }
 
 nav ul li a:hover {
-    background-color: #34495e;
-    padding-left: 30px;
+    background: rgba(255, 255, 255, 0.1); /* Efek hover halus */
+    transform: translateX(6px); /* Geser sedikit ke kanan */
 }
 
-/* Konten Utama */
-main {
-    margin-left: 50px;
-    padding: 30px;
-    flex-grow: 1;
+nav ul li a::before {
+    content: '';
+    width: 4px; /* Lebar indikator */
+    height: 36px; /* Tinggi indikator */
+    background: var(--light);
+    margin-right: 25%; /* Jarak antara indikator dan teks */
+    border-radius: 2px;
+    opacity: 0; /* Awalnya transparan */
+    transition: opacity 0.3s; /* Transisi halus */
 }
 
-/* Header */
-header {
-    background-color: #3498db;
+nav ul li a:hover::before {
+    opacity: 1; /* Tampilkan indikator saat hover */
+}
+
+.menu-btn {
+    display: none;
+    background: transparent;
+    font-size: 2rem;
+    border: none;
     color: white;
-    padding: 40px 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1001; /* Pastikan di atas elemen lain */
+}
+
+
+
+/* Main Content Enhancements */
+main {
+    /* background: var(--light); */
+    /* background: url('/assets/skindisease.png'); */
+    background-size: cover;
+    border-radius: 15px;
+    padding: var(--spacing);
+    box-shadow: 0 4px 15px var(--shadow);
+    transition: box-shadow 0.3s;
+}
+
+header {
     text-align: center;
-    border-radius: 10px;
-    margin-bottom: 30px;
+    padding-bottom: var(--spacing);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    margin-bottom: var(--spacing);
 }
 
 header h1 {
-    font-size: 36px;
-    margin: 0;
+    font-size: 2.2rem;
+    color: var(--primary);
+    margin-bottom: 8px;
 }
 
-header p {
-    font-size: 20px;
-    margin-top: 10px;
-}
-
-/* Section utama */
-section {
-    background-color: white;
-    padding: 30px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-section h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
-    color: #2980b9;
-}
-
-/* Card container */
-.card-container {
+#home{
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    flex-direction: column;
+    margin-top: 5rem;
+}
+
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing);
+    margin-bottom: var(--spacing);
 }
 
 .card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 48%;
+    background: var(--neutral);
+    border-radius: 15px;
+    padding: var(--card-spacing);
+    box-shadow: 0 4px 15px var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
 }
 
 .card h3 {
-    color: #2980b9;
-    font-size: 22px;
-    margin-bottom: 20px;
-}
-
-.card input[type="text"], .card input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.card button {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.card button:hover {
-    background-color: #2980b9;
-}
-
-/* Hasil input di card kanan */
-#resultCard p {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-/* Footer */
-footer {
-    background-color: #2c3e50;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    padding-right: 20px;
     position: relative;
-    bottom: 0;
-    width: 100%;
+    padding-left: 30px;
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
 }
 
-/* Responsif untuk tampilan mobile */
+.card h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 50%;
+}
+
+/* Form Improvements */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+}
+
+form input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 8px 0;
+    transition: border-color 0.3s;
+}
+
+form button {
+    width: 100%;
+    padding: 16px;
+    background: var(--primary);
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    margin-top: 16px;
+    transition: background 0.3s;
+}
+
+.prediction-result {
+    padding: var(--card-spacing);
+    background: var(--light);
+    border-radius: 12px;
+    margin-top: var(--spacing);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.prediction-result img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive Enhancements */
 @media (max-width: 768px) {
     .container {
-        flex-direction: column;
-    }
-    
-    nav {
-        width: 100%;
-        position: relative;
-        height: auto;
+        grid-template-columns: 1fr;
+        padding: var(--spacing) 12px;
     }
 
+    nav {
+        transform: translateY(-20px);
+        opacity: 0;
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+    
+    @keyframes fadeIn {
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }    
+
     main {
-        margin-left: 0;
+        border-radius: 15px;
+        margin-top: 0;
     }
 
     .card-container {
-        flex-direction: column;
-        gap: 10px;
+        grid-template-columns: 1fr;
     }
 
-    .card {
-        width: 100%;
+    .menu-btn {
+        display: block; /* Pastikan tombol hamburger muncul */
     }
+
+    nav ul {
+        display: none; /* Default: menu tersembunyi */
+        flex-direction: column;
+        background: rgba(26, 115, 232, 0.95);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    nav ul.show {
+        display: flex; /* Munculkan menu saat tombol diklik */
+    }
+}
+
+.solusi{
+    /* background: var(--secondary); */
+    padding: 16px;
+}
+
+.button-wrp{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.solusi-btn{
+    padding: 20px;
+    background: var(--accent);
+    color: var(--light);
+    border: 2px var(--accent);
+    border-radius: 20px;
+
+}
+
+#popup {
+    display: none; /* Pastikan tidak muncul secara default */
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#popup.show {
+    display: flex;
+    opacity: 1;
+    transform: scale(1);
 }

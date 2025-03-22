@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Selamat Datang di Skin Check</title>
+    <link rel="stylesheet" href="/static/landing.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Beranda</a></li>
+            <li><a href="{{ url_for('prediksi') }}">Prediksi</a></li>
+        </ul>
+    </nav>
+
+    <!-- Overlay Background -->
+    <div class="overlay"></div>
+
+    <!-- Konten Landing Page -->
+    <div class="landing-container">
+        <header>
+            <h1>Selamat Datang di <span class="highlight">Skin Check</span></h1>
+            <p>Platform terbaik untuk memeriksa kondisi kulit Anda secara cepat dan akurat.</p>
+        </header>
+
+        <section class="cta-section">
+            <p>Dapatkan informasi seputar penyakit kulit dengan mudah melalui fitur prediksi kami.</p>
+            <a href="{{ url_for('prediksi') }}" class="cta-button">Masuk ke Dashboard</a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Skin Check. Hak Cipta Dilindungi.</p>
+    </footer>
+</body>
+</html>
