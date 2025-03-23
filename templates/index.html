@@ -42,8 +42,8 @@
 
                 <!-- Menampilkan Hasil Prediksi -->
                 <div class="card">
+                    <h3 class="mb-8 font-bold">Hasil Prediksi</h3>
                     {% if filename %}
-                        <h3 class="mb-8 font-bold">Hasil Prediksi</h3>
                         <img src="{{ url_for('static', filename='uploads/' + filename) }}" class="rounded-lg mb-4" alt="Uploaded Image" width="300">
                         
                         <!-- Menampilkan semua kelas -->
@@ -52,7 +52,7 @@
                                 <div class="prediction-item {% if pred.index == top_class_index %}highest{% endif %}">
                                     <p>
                                         <strong>Index {{ pred.index }}</strong> ({{ pred.class_name }})<br>
-                                        Confidence: {{ pred.confidence }}% 
+                                        Akurasi : {{ pred.confidence }}% 
                                         {% if pred.index == top_class_index %} 
                                             <span class="text-green-500">✓ Tertinggi</span>
                                         {% endif %}
@@ -66,7 +66,7 @@
                             <h3 class="mb-8 font-bold">Kelas Utama:</h3>
                             <p>
                                 {{ top_class }} (Index {{ top_class_index }})<br>
-                                Confidence: {{ top_confidence }}%
+                                Akurasi : {{ top_confidence }}%
                             </p>
                         </div>
                     {% endif %}
